@@ -1,0 +1,25 @@
+html, body {
+	margin:0;
+	padding:0;
+
+}
+
+html p {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.hilightRow h3 {
+	font-size: 18px;
+	font-weight: 700;
+	text-align: center;
+	padding: 0px 0px 0px 0px;
+}
+
+.hilightRow p, hr {
+	color: rgba(255,255,255,0.5);
+	text-align: center;
+}
+
+#over img {
+	max-height: 80px;
+}
