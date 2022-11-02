@@ -1,253 +1,40 @@
+{% extends "portfolio/base.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-<title>Juan C. Reyess</title>
-<head>
 
-	<meta charset="UTF-8">
-	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+{% block content %}
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio/test_image2.png' %}" class="img-fluid">
+  </div>
+</div>
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">test Juan is Commander-in-Chief at ZappyCode and lives in Downtown Tokyo 😊</h1>
+  </div>
+</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
-	<!-- <link rel="stylesheet" type="text/css" href="./assets/css/reset.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="./assets/css/port.css"> -->
-  <link rel="stylesheet" href="{% static "portfolio/assets/css/port.css" %}">
-	<script src="wikiApi.js"></script>
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
 
-	<style type="text/css">
-		.test { display: flex; }
-		@media (max-width: 992px) {
-  			.test { display: block; }
-  }
-}
-	</style>
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
 
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
 
-</head>
-<body>
+  </div>
+  {% endfor %}
+</div>
 
-	<div class="container-fluid">
-
-		<div class="row test" style="">
-			<div class="col-md-6 col-sm-12" style="padding: 0px; background-color: rgb(42, 10, 60)">
-				<!-- <img class="img-responsive" src="./assets/images/header.jpg" style="width: 100%; height: 100%;" > -->
-        <img class="img-responsive" src="{% static "portfolio/assets/images/header.jpg" %}" style="width: 100%; height: 100%;" >
-			</div>
-			<div class="col-md-6 col-sm-12" style="background-color: rgba(243,243,243,0.9); padding: 0px">
-
-				<div style="padding: 60px 60px 60px 40px">
-					<p style="font-size: 60px; line-height: 60px; letter-spacing: -1px; font-weight: 700; font-family: 'Montserrat'">Juan C. Reyes</p>
-
-					<p style="color: #676e67; font-size: 16px; font-weight: bold; padding: 40px 0px 40px 0px;">Sr. Lead Data Scientist</p>
-
-					<p style="color: #808080; font-size: 16px; line-height: 28px;">
-						10 years of experience saving total of > $25M in costs after conducting quantitative / large data set analyses on up to $360M in expenses &amp; $54M in global capital investment budgets for Apple, NetSuite, &amp; Reddit. SME in creation & implementation of global data collecting algorithms, ETL, analyses, & databases across marketing, advertising & operations. 4+ years of advising CFO, Business Partners &amp; executives of up to $1B lines of business. Excellent communicator, self-starter driven by curiosity and a thirst for learning.
-					</p>
-
-					<div style="padding-top: 20px;">
-						<a href="https://www.linkedin.com/in/juan-c-reyes" target="_blank" style="color: #595f58; padding: 0px 20px 0px 0px; font-size: 30px;"> <span><i class="fa fa-linkedin-square" aria-hidden="true"></i></span> </a>
-						<a href="https://twitter.com/JuanCAnalytics" target="_blank" style="color: #595f58; padding: 0px 20px 0px 0px; font-size: 30px;"> <span><i class="fa fa-twitter" aria-hidden="true"></i></span> </a>
-						<a href="https://github.com/cookies4u" target="_blank" style="color: #595f58; padding: 0px 20px 0px 0px; font-size: 30px;"> <span><i class="fa fa-github" aria-hidden="true"></i></span> </a>
-						<a href="https://stackoverflow.com/users/7282990/juan-reyes?tab=profile" target="_blank" style="color: #595f58; padding: 0px 20px 0px 0px; font-size: 30px;"> <span><i class="fa fa-stack-overflow" aria-hidden="true"></i></span> </a>
-						<a href="https://www.freecodecamp.org/cookies4u" target="_blank" style="color: #595f58; padding: 0px 20px 0px 0px; font-size: 30px;"> <span><i class="fa fa-free-code-camp" aria-hidden="true"></i></span> </a>
-						<a href="https://public.tableau.com/profile/juan.c.reyes#!/" target="_blank" style="color: #595f58; padding: 0px 20px 0px 0px; font-size: 15px;"> <span><strong style="font-size: 30px">T</strong>ableau</span></a>
-						<a href="https://drive.google.com/file/d/0B6Z09POwVFzMVzlpU3F4TXdRcEk/view?usp=sharing" target="_blank" style="color: #595f58; padding: 0px 20px 0px 0px; font-size: 15px;"> <span><strong style="font-size: 30px">R</strong>esume</span></a>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<div class="row hilightRow test" style="">
-	        <div class="col-md-3 col-sm-12" style="background-color: #303032">
-
-				<div id="over" style="width:100%;">
-					<!-- <img src="./assets/images/hilight1.png" style="padding-top: 20px; margin-left: auto; margin-right: auto; display: block;"> -->
-          <img src="{% static "portfolio/assets/images/hilight1.png" %}" style="padding-top: 20px; margin-left: auto; margin-right: auto; display: block;">
-				</div>
-
-	        	<h3 style="color: #6b726b;">Driving results</h3>
-	        	<p>Actionable reporting</p>
-	        	<hr style="border-top: dashed 2px; width: 20px;">
-	        	<p style="padding-bottom: 20px;">Meaningful presentations to help teams and executives achive goals.</p>
-			</div>
-			<div class="col-md-3 col-sm-12" style="background-color: #343436">
-
-				<div id="over" style="width:100%;">
-					<!-- <img src="./assets/images/hilight2.png" style="padding-top: 20px; margin-left: auto; margin-right: auto; display: block;"> -->
-          <img src="{% static "portfolio/assets/images/hilight2.png" %}" style="padding-top: 20px; margin-left: auto; margin-right: auto; display: block;">
-				</div>
-
-				<h3 style="color: #6b726b;">Data Analytics</h3>
-	        	<p>Insightful analysis</p>
-	        	<hr style="border-top: dashed 2px; width: 20px;">
-				<p>Tableau, Python (Pandas, Seaborn, Machine Learning, Spark), SQL, and AWS leveraged to pinpoint trends.</p>
-			</div>
-			<div class="col-md-3 col-sm-12" style="background-color: #595f58">
-
-				<div id="over" style="width:100%;">
-					<!-- <img src="./assets/images/hilight3.png" style="padding-top: 20px; margin-left: auto; margin-right: auto; display: block;"> -->
-          <img src="{% static "portfolio/assets/images/hilight3.png" %}" style="padding-top: 20px; margin-left: auto; margin-right: auto; display: block;">
-				</div>
-
-				<h3 style="color: #ffffff;">Computer Science</h3>
-	        	<p>Design patterns &amp; algorithms </p>
-	        	<hr style="border-top: dashed 2px; width: 20px;">
-				<p>Custom Javascript/HTML/CSS reporting dashboards created. Python shell scripts to automate/simplify task</p>
-			</div>
-			<div class="col-md-3 col-sm-12" style="background-color: #ffffff">
-
-				<div id="over" style="width:100%;">
-					<!-- <img src="./assets/images/hilight4.png" style="padding-top: 20px; margin-left: auto; margin-right: auto; display: block;"> -->
-          <img src="{% static "portfolio/assets/images/hilight4.png" %}" style="padding-top: 20px; margin-left: auto; margin-right: auto; display: block;">
-				</div>
-
-				<h3 style="color: #595f58;">Project Management</h3>
-	        	<p style="color: #888888">Cost saving solutions</p>
-	        	<hr style="border-top: dashed 2px; width: 20px;color: #888888;">
-				<p style="color: #888888">Jira to manage global projects and provide guideance to executives</p>
-			</div>
-	    </div>
-
-	    <div class="row test" style="">
-	        <div class="col-md-6 col-sm-12" style="background-color: rgba(243,243,243,0.9); padding: 0px">
-	        	<div style="padding: 60px 60px 60px 60px">
-		        	<h3 style="font-size: 30px; font-family: 'Montserrat', 'sans-serif'; color: #343436; font-weight: bold;">My Experience</h3>
-		        	<p style="color: #555555; line-height: 25px; padding: 20px 0px 10px 0px">
-		        		Mathematics major with a distinguished career with fortune <strong>500 companies</strong>. Innovative cost savings solutions for global cross-functional teams. Insightful guidance provided to executives.
-		        	</p>
-
-		        	<ul style="padding-left: 20px">
-		        		<hr style="padding: 0px; margin: 0px; border-top-color: rgba(103, 110, 103, 0.12); border-width: 1px">
-		        		<li>
-		        			<h4 style="color: #676e67; letter-spacing: -0.02em; font-size: 15px; font-weight: 700;">NetSuite (Oracle Sub)</h4>
-		        			<p style="color: #8c8c93; margin: 0; line-height: 1.4; letter-spacing: -0.01em; font-weight: 400; font-size: italic; padding-bottom: 10px;">Applications expert. Team reporting lead utilizing mySQL.</p>
-		        		</li>
-		        		<hr style="padding: 0px; margin: 0px; border-top-color: rgba(103, 110, 103, 0.12); border-width: 1px">
-		        		<li>
-		        			<h4 style="color: #676e67; letter-spacing: -0.02em; font-size: 15px; font-weight: 700;">Apple Inc.</h4>
-		        			<p style="color: #8c8c93; margin: 0; line-height: 1.4; letter-spacing: -0.01em; font-weight: 400; font-size: italic; padding-bottom: 10px">Project manager, ETL, and co-application creator. Utilizing Tableau, HTML, CSS, Javascript, and MySql to create detailed travel reporting dashboards for executives and their teams.</p>
-		        		</li>
-		        		<hr style="padding: 0px; margin: 0px; border-top-color: rgba(103, 110, 103, 0.12); border-width: 1px">
-		        	</ul>
-	        	</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div style="padding: 60px 20px 20px 20px">
-					<h3 style="font-size: 30px; font-family: 'Montserrat', 'sans-serif'; color: #343436; font-weight: bold;">My Core Skills</h3>
-					<!--
-		        	<p style="color: #555555; line-height: 25px; padding: 20px 0px 10px 0px">
-		        		Nemo enim <strong>ipsam voluptatem</strong> quia voluptas sit aspernatur aut odit aut fugit, sed qui
-		        	</p>
-		        	-->
-
-		        	<div>
-		        		<p class="progress-bar-title">Tableau</p>
-		        		<div>
-						  <div class="progress">
-						    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color: #595f58">
-
-						    </div>
-						  </div>
-						</div>
-		        	</div>
-		        	<div>
-		        		<p class="progress-bar-title">SQL</p>
-		        		<div>
-						  <div class="progress">
-						    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color: #595f58">
-
-						    </div>
-						  </div>
-						</div>
-		        	</div>
-		        	<div>
-		        		<p class="progress-bar-title">Python: Pandas</p>
-		        		<div>
-						  <div class="progress">
-						    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color: #595f58">
-
-						    </div>
-						  </div>
-						</div>
-		        	</div>
-		        	<div>
-		        		<p class="progress-bar-title">AWS</p>
-		        		<div>
-						  <div class="progress">
-						    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color: #595f58">
-
-						    </div>
-						  </div>
-						</div>
-		        	</div>
-		        	<div>
-		        		<p class="progress-bar-title">Machine Learning</p>
-		        		<div>
-						  <div class="progress">
-						    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color: #595f58">
-
-						    </div>
-						  </div>
-						</div>
-		        	</div>
-
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6" style="background-color: black; margin: 0px; padding: 0px;">
-				<!-- <img src="./assets/images/img11.jpg" style="width: 100%; height: 100%; padding: 10px; padding-bottom: 0px"> -->
-        <img src="{% static "portfolio/assets/images/img11.jpg" %}" style="width: 100%; height: 100%; padding: 10px; padding-bottom: 0px">
-			</div>
-	    </div>
-
-	    <div class="row test" style="">
-	    	<div class="col-md-6 col-sm-12">
-	    		<!-- <div class="row" style="height: 33%">
-	    			<div class="col-md-12 col-sm-12" style="background-color: #303032; height: 100%">
-	    				<p style="color: white; font-style: italic; text-align: center; padding-top: 20px; margin: 0px">Every strike brings me closer to the next home run. - <strong>Babe Ruth</strong></p>
-	    				<div style="width:100%; padding: 20px">
-							<img src="./assets/images/babe.jpg" style="margin-left: auto; margin-right: auto; display: block; height: 120px; border: solid #595f58">
-						</div>
-	    			</div>
-	    		</div> -->
-	    		<div class="row" style="height: 100%">
-	    			<div class="col-md-12 col-sm-12" style="background-color: #595f58; height: 100%">
-	    				<div style="padding: 40px 60px 40px 60px">
-				        	<h3 style="font-size: 30px; font-family: 'Montserrat', 'sans-serif'; color: #ffffff; font-weight: bold;">Education</h3>
-				        	<p style="color: rgba(255,255,255,0.5); line-height: 25px; padding: 20px 0px 10px 0px">
-				        		Self-starter driven by curiosity and a thirst for learning.
-				        	</p>
-
-				        	<ul style="padding-left: 20px">
-				        		<hr style="padding: 0px; margin: 0px; border-top-color: rgba(255,255,255,0.5); border-width: 1px">
-				        		<li>
-				        			<h4 style="letter-spacing: -0.02em; font-size: 15px; font-weight: 700;"><a href="" target="_blank" style="color: rgba(255,255,255,0.5)">UC San Diego</a></h4>
-				        			<p style="color: white; margin: 0; line-height: 1.4; letter-spacing: -0.01em; font-weight: 400; font-size: italic; padding-bottom: 10px;">Mathematics: multi-variable calculus, theoretical mathematics. Economics: statistical methods using Stata and Matlab.</p>
-				        		</li>
-				        		<hr style="padding: 0px; margin: 0px; border-top-color: rgba(255,255,255,0.5); border-width: 1px">
-				        		<li>
-				        			<h4 style="letter-spacing: -0.02em; font-size: 15px; font-weight: 700;"><a href="" target="_blank" style="color: rgba(255,255,255,0.5)">UC Berkeley</a></h4>
-				        			<p style="color: white; margin: 0; line-height: 1.4; letter-spacing: -0.01em; font-weight: 400; font-size: italic; padding-bottom: 10px;">6-month program dedicated to CS fundamentals in search/sort algorithms, data structures, design patterns. Built web applications with HTML, CSS, Javascript, JQuery, Bootstrap, React, Handlebars Js, AJAX, APIs, Firebase, Express, Node Js, MySQL, MongoDB, Client-side storage/local storage, SEO, Web scraping, Python/Django, Heroku, Git</p>
-				        		</li>
-				        		<hr style="padding: 0px; margin: 0px; border-top-color: rgba(255,255,255,0.5); border-width: 1px">
-				        	</ul>
-	        			</div>
-	    			</div>
-	    		</div>
-	    	</div>
-	    	<div class="col-md-6 col-sm-12" style="background-color: #000000">
-	    		<!-- <img src="./assets/images/img10.jpg" style="max-width: 100%; max-height: 100%; padding-top: 10px; padding-bottom: 10px"> -->
-          <img src="{% static "portfolio/assets/images/img10.jpg" %}" style="max-width: 100%; max-height: 100%; padding-top: 10px; padding-bottom: 10px">
-	    	</div>
-	    </div>
-
-
-	</div>
-</body>
-</html>
+{% endblock %}
